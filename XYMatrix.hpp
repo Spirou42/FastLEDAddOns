@@ -49,14 +49,14 @@ typedef struct _FLRect{
 
 class XYMatrix {
 public:
-  XYMatrix(uint16_t w, uint16_t h, CRGB* buffer,bool serp=true,bool flipped=false):_width(w),_height(h),_buffer(buffer),_isSerpentine(serp){};
+  XYMatrix(uint8_t w, uint8_t h, CRGB* buffer,CRGB* bBuffer=NULL,bool serp=true,bool flipped=true,bool rot=true):_width(w),_height(h),_buffer(buffer),_backBuffer(bBuffer),_isSerpentine(serp),_isFlipped(flipped),_isRotated(rot){};
 
-  uint16_t width(){return _width;}
-  uint16_t height(){return _height;}
+  uint8_t width(){return _width;}
+  uint8_t height(){return _height;}
 
-  void setPixel(int16_t x, int16_t y, CRGB color);
+  void setPixel(uint8_t x, uint8_t y, CRGB color);
 	void setPixel(FLPoint coord,CRGB color);
-	CRGB getPixel(int16_t x, int16_t y);
+	CRGB getPixel(uint8_t x, int8_t y);
 	CRGB getPixel(FLPoint coord);
   void clear();
 
@@ -69,12 +69,15 @@ public:
 
 	// Bresenham line algorythm
 	void line(FLPoint st, FLPoint en, CRGB color);
-
+private:
+  uint16_t XY(uint8_t x, uint8_t y);
 protected:
-  uint16_t _width,_height;    ///< dimensions of the Matrix
+  uint8_t _width,_height;    ///< dimensions of the Matrix
   CRGB* _buffer;
+  CRGB* _backBuffer;
   bool _isSerpentine;
   bool _isFlipped;
+  bool _isRotated;
 };
 
 #endif
