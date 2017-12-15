@@ -6,6 +6,6 @@
 #ifndef __FASTLEDADDONS_H__
 #define __FASTLEDADDONS_H__
 
-#include "XYMatrix.hpp"
-
+#include <XYMatrix.hpp>
+#include <FLAOPalettes.h>
 #endif
