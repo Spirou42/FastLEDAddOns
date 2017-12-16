@@ -5,10 +5,9 @@ Effects.hpp
 #ifndef __EFFECT_H__
 #define __EFFECT_H__
 #include <Arduino.h>
+#include <Types.h>
 /**
 baseclass for LED Effects
-
-
 */
 class Effect {
 
@@ -31,10 +30,16 @@ public:
 	called after the last frame. restore your book keeping here and clean up your dynamic objects
 	*/
 	virtual void stopEffect(){};
-
+  String name(){return _name;}
 protected:
   String _name;
 };
 
+/** if you use the effectRunner method you have to declare the following: **/
+
+extern EffectList systemEffectList;
+extern EffectList::iterator currentRunningEffect;
+
 int effectRunner(unsigned long now, void* userdata);
+
 #endif
