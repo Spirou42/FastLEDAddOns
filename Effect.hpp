@@ -6,6 +6,7 @@ Effects.hpp
 #define __EFFECT_H__
 #include <Arduino.h>
 #include <Types.h>
+#include <FastLEDAddOns_Intern.h>
 /**
 baseclass for LED Effects
 */
@@ -37,9 +38,10 @@ protected:
 
 /** if you use the effectRunner method you have to declare the following: **/
 
+ADDONS_NAMESPACE_BEGIN
 extern EffectList systemEffectList;
 extern EffectList::iterator currentRunningEffect;
 
 int effectRunner(unsigned long now, void* userdata);
-
+ADDONS_NAMESPACE_END
 #endif

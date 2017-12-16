@@ -5,7 +5,7 @@ Effect.cpp
 
 #include "Effect.hpp"
 #include <Streaming.h>
-
+ADDONS_NAMESPACE_BEGIN
 int effectRunner(unsigned long now, void* userdata){
   static EffectList::iterator lastTimeEffect = systemEffectList.end();
   //Serial << "EffectR:"<<endl;
@@ -20,4 +20,6 @@ int effectRunner(unsigned long now, void* userdata){
     lastTimeEffect = currentRunningEffect;
   }
   (*currentRunningEffect)->frame(now);
+  return 0;
 }
+ADDONS_NAMESPACE_END
