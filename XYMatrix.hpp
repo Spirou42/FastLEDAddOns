@@ -69,8 +69,8 @@ public:
 
 	// Bresenham line algorythm
 	void line(FLPoint st, FLPoint en, CRGB color);
-private:
   uint16_t XY(uint8_t x, uint8_t y);
+
 protected:
   uint8_t _width,_height;    ///< dimensions of the Matrix
   CRGB* _buffer;

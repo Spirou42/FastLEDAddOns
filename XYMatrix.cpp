@@ -7,7 +7,10 @@ XYMatrix.cpp
 
 uint16_t  XYMatrix::XY( uint8_t x, uint8_t y)
 {
-  uint16_t i;
+  uint16_t i = _width*_height;
+  if( x<0 || x>(_width-1) || y<0 || y>(_height-1)){
+    return i;
+  }
   if(_isFlipped){
     y = (this->_height-1)-y;
   }
