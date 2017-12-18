@@ -62,6 +62,7 @@ public:
 
 	void clearAll();
 	void fill(CRGB color);
+  void fadeToBlack(uint8_t by);
 
 	void flush();
 	void setBrightness(uint8_t b);

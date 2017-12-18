@@ -97,6 +97,10 @@ void XYMatrix::clear(){
     p[i]=CRGB::Black;
   }
 }
+void XYMatrix::fadeToBlack(uint8_t by){
+  CRGB* p = (_backBuffer)?_backBuffer:_buffer;
+  fadeToBlackBy(p,(_width*_height),by);
+}
 
 void XYMatrix::flush(){
   if(!_backBuffer){

@@ -7,9 +7,13 @@ Effects.hpp
 #include <Arduino.h>
 #include <Types.h>
 #include <FastLEDAddOns_Intern.h>
+#include <UI_Helpers.hpp>
 /**
 baseclass for LED Effects
 */
+ADDONS_NAMESPACE_BEGIN
+typedef std::vector<ValueWrapper*> ParameterList;
+ADDONS_NAMESPACE_END
 class Effect {
 
 public:
@@ -27,13 +31,27 @@ public:
 	*/
 	virtual void frame(unsigned long now){};
 
+  /** the framerate for the effect */
+  virtual uint16_t frameRate(){return 1000/60;}
 	/**
 	called after the last frame. restore your book keeping here and clean up your dynamic objects
 	*/
 	virtual void stopEffect(){};
   String name(){return _name;}
+
+  /** parameter handling
+  user cocntrolable parameters are stored in
+  */
+  FastLEDAddOns::ParameterList::iterator parameters(){
+    return _parameters.begin();
+  }
+
 protected:
-  String _name;
+  void addParameter(ValueWrapper* value){
+    _parameters.push_back(value);
+  }
+  FastLEDAddOns::ParameterList _parameters;
+  String        _name;
 };
 
 /** if you use the effectRunner method you have to declare the following: **/
@@ -43,5 +61,6 @@ extern EffectList systemEffectList;
 extern EffectList::iterator currentRunningEffect;
 
 int effectRunner(unsigned long now, void* userdata);
+extern volatile int16_t requestedFrameRate;
 ADDONS_NAMESPACE_END
 #endif
