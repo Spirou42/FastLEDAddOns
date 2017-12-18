@@ -12,7 +12,7 @@ a collection of usefull Types, mostly collections
 #include <FastLED.h>
 class Effect;
 
-/** some usefulle collections */
+/** some usefull collections */
 
 /** a list of named Palettes, easy to synchronise with a selection menu */
 typedef std::pair<const String,CRGBPalette16> PalettePair;
