@@ -92,9 +92,13 @@ void XYMatrix::clearAll(){
 	}
 }
 void XYMatrix::clear(){
+  fill(CRGB::Black);
+}
+
+void XYMatrix::fill(CRGB color){
   CRGB* p = (_backBuffer)?_backBuffer:_buffer;
   for(uint16_t i=0;i<(_width*_height);i++){
-    p[i]=CRGB::Black;
+    p[i]=color;
   }
 }
 void XYMatrix::fadeToBlack(uint8_t by){
