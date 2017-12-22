@@ -68,6 +68,8 @@ public:
 	void setBrightness(uint8_t b);
 	uint8_t brightness();
 
+  void setFlipped(bool flag){_isFlipped = flag;}
+  bool isFlipped(){return _isFlipped;}
 	// Bresenham line algorythm
 	void line(FLPoint st, FLPoint en, CRGB color);
   uint16_t XY(uint8_t x, uint8_t y);
