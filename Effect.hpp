@@ -37,6 +37,7 @@ public:
 	called after the last frame. restore your book keeping here and clean up your dynamic objects
 	*/
 	virtual void stopEffect(){};
+
   String name(){return _name;}
 
   /** parameter handling
@@ -45,6 +46,10 @@ public:
   FastLEDAddOns::ParameterList::iterator parameters(){
     return _parameters.begin();
   }
+
+  virtual size_t 					numberOfParameters(){return 0;};
+	virtual ValueWrapper* 	parameterAt(size_t idx){Serial <<"Gnartz";return NULL;};
+	virtual String* 		    parameterNameAt(size_t idx){Serial <<"Gnartz2";return NULL;};
 
 protected:
   void addParameter(ValueWrapper* value){
