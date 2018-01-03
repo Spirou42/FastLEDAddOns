@@ -49,7 +49,7 @@ public:
 
   virtual size_t 					numberOfParameters(){return 0;};
 	virtual ValueWrapper* 	parameterAt(size_t idx){Serial <<"Gnartz";return NULL;};
-	virtual String* 		    parameterNameAt(size_t idx){Serial <<"Gnartz2";return NULL;};
+	virtual String  		    parameterNameAt(size_t idx){Serial <<"Gnartz2";return "";};
 
 protected:
   void addParameter(ValueWrapper* value){
