@@ -4,6 +4,8 @@ a collection of usefull Types, mostly collections
 */
 // some datatype to map Names(Strings) palettes or Effects
 
+#ifndef __TYPES_H__
+#define __TYPES_H__
 
 #include <Arduino.h>
 #include <vector>
@@ -15,7 +17,13 @@ class Effect;
 /** some usefull collections */
 
 /** a list of named Palettes, easy to synchronise with a selection menu */
-typedef std::pair<const String,CRGBPalette16> PalettePair;
+struct Palette_t{
+ public:
+  Palette_t(CRGBPalette16 p, bool b):palette(p),loop(b){};
+  CRGBPalette16 palette;
+  bool  loop;
+};
+typedef std::pair<const String,Palette_t> PalettePair;
 typedef std::vector<PalettePair*> PaletteList;
 
 /** a list of named effect functions as a simple way to implement effects*/
@@ -30,3 +38,4 @@ typedef std::vector<Effect*> EffectList;
 **/
 extern PaletteList systemPalettes;
 extern PaletteList::iterator currentSystemPalette;
+#endif
