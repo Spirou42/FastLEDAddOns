@@ -11,4 +11,5 @@
 #include <XYMatrix.hpp>
 #include <FLAOPalettes.h>
 #include <Effect.hpp>
+#include <PrintHelper.h>
 #endif

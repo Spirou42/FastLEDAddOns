@@ -72,7 +72,9 @@ public:
   bool isFlipped(){return _isFlipped;}
 	// Bresenham line algorythm
 	void line(FLPoint st, FLPoint en, CRGB color);
+  void circle(FLPoint center, int16_t radius, CRGB color, bool fill = false);
   uint16_t XY(uint8_t x, uint8_t y);
+  uint16_t XY(FLPoint p);
 
 protected:
   uint8_t _width,_height;    ///< dimensions of the Matrix
